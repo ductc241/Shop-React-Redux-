@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, NavLink, Outlet, Navigate } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import AdminLayout from './layouts/admin'
+import ProductList from './components/ProductList/ProductList'
+import NewProduct from './components/forms/NewProduct'
 
-export default App;
+
+const Router = (props) => {
+  	return (
+	    <BrowserRouter>
+	      	<Routes >
+		        {/* Layout Admin */}
+		        <Route path="admin/*" element={<AdminLayout />} >
+		          	<Route index element={<Navigate to="dashboard" />} />
+		          	<Route path="products/create" element={<NewProduct />} />
+		          	<Route path="products/list" element={<ProductList />} />
+		        </Route>
+	      	</Routes>
+	    </BrowserRouter>
+	)
+};
+
+export default Router;

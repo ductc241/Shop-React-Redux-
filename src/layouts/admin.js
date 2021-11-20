@@ -1,10 +1,7 @@
-import { BrowserRouter, Routes, Route, NavLink, Outlet, Navigate } from "react-router-dom";
-import { Layout, Menu, Breadcrumb } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import {NavLink, Outlet} from "react-router-dom";
+import { Layout, Menu } from 'antd';
+import { UserOutlined, LaptopOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
-
-import ProductList from '../components/ProductList/ProductList'
-import NewProduct from '../components/forms/NewProduct'
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
@@ -25,12 +22,12 @@ function AdminLayout() {
 			          	<Menu mode="inline" defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} style={{ height: '100%' }}>
 			            	<SubMenu key="sub1" icon={<UserOutlined />} title="Product">
 			              		<Menu.Item key="1">
-			              			<NavLink to="./products/list">
+			              			<NavLink to="products/list">
           								Sản Phẩm
         							</NavLink>
 			              		</Menu.Item>
 			              		<Menu.Item key="2">
-			              			<NavLink to="./products/create">
+			              			<NavLink to="products/create">
           								Thêm Sản Phẩm
         							</NavLink>
 			              		</Menu.Item>
@@ -44,7 +41,7 @@ function AdminLayout() {
 			            	</SubMenu>
 			          	</Menu>
 		        	</Sider>
-		        	<Content style={{ padding: '0 24px', minHeight: 280, backgroundColor: 'white' }}>
+		        	<Content style={{ padding: 24, minHeight: 280, backgroundColor: 'white' }}>
 		        		 {<Outlet />}
 		        	</Content>
 		      	</Layout>

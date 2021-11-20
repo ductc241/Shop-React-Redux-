@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, NavLink, Outlet, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import AdminLayout from './layouts/admin'
 import ProductList from './components/ProductList/ProductList'

@@ -5,7 +5,7 @@ export const getAll = () =>{
     return instance.get(url)
 }
 
-export const add= (item) =>{
-    const url = "/products";
+export const add = (item) =>{
+    const url = "/product";
     return  instance.post(url, item)
 }

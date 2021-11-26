@@ -1,10 +1,12 @@
-import { Form, Input, InputNumber, Button, Upload } from 'antd';
+import { Form, Input, InputNumber, Button, Upload, notification } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
-import { storage } from '../../config/firebase';
+import { storage } from '../../../config/firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-import * as ProductAPI from '../../api/product';
+import * as ProductAPI from '../../../api/product';
+import { useState } from 'react';
+import { useNavigate} from "react-router-dom";
 
 const layout = {
   	labelCol: { span: 2 },
@@ -24,7 +26,10 @@ const validateMessages = {
 	  },
 };
 
-const NewProduct = (props) => {
+const ProductCreate = (props) => {
+	const navigate = useNavigate();
+	const [isLoading, setIsLoading] = useState(false)
+
 	const normFile = (e) => {	  
 		if (Array.isArray(e)) {
 		  return e;
@@ -35,19 +40,31 @@ const NewProduct = (props) => {
 
 	const onFinish = (data) => {
 		let file = data.upload[0].originFileObj
+		setIsLoading(true)
 
 		const storageRef = ref(storage, 'products/' + file.name);
 		const uploadTask = uploadBytesResumable(storageRef, file);
 
 		uploadTask.on('state_changed', 
 			() => {
-				getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+				getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
 					const product = {
 						...data,
 						image: url
 					}
 
-					ProductAPI.add(product)
+					const response = await ProductAPI.add(product)
+					if(response.status === 200){
+						notification.success({
+							message: 'Thông Báo',
+							description:'Thêm sản phẩm thành công',
+							duration: 1.5,
+							onClose: () => {
+								navigate("/admin/products/list");
+							}
+						})	
+					}
+					setIsLoading(false)
 				})
 			}
 		)
@@ -87,7 +104,7 @@ const NewProduct = (props) => {
 				</Upload>
 			</Form.Item>
 	      	<Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 2 }}>
-		        <Button type="primary" htmlType="submit">
+		        <Button type="primary" htmlType="submit" loading={isLoading}>
 					Submit
 				</Button>
 	      	</Form.Item>
@@ -95,4 +112,4 @@ const NewProduct = (props) => {
   	)
 }
 
-export default NewProduct;
+export default ProductCreate;

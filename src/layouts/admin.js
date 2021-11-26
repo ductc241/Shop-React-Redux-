@@ -7,6 +7,7 @@ const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
 function AdminLayout() {
+	const isLogging = true;
   	return (
    		<Layout>
 		    <Header className="header">
@@ -41,6 +42,7 @@ function AdminLayout() {
 			            	</SubMenu>
 			          	</Menu>
 		        	</Sider>
+
 		        	<Content style={{ padding: 24, minHeight: 280, backgroundColor: 'white' }}>
 		        		 {<Outlet />}
 		        	</Content>

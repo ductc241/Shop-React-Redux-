@@ -1,12 +1,13 @@
+import { Outlet } from "react-router";
+import { Header } from "../screens/client/header/Header";
+import { Shop } from "../screens/client/Shop/Shop";
+
 function UserLayout() {
   	return (
-   		<div classNames="header">
-			<div className="header-top">
-				<div className="container">
-					<p>1280</p>
-				</div>
-			</div>
-		</div>
+		<>
+			<Header />
+			<Outlet />
+		</>
   	);
 }
 

@@ -17,7 +17,7 @@ import RequireAdmin from "./components/RequireAdmin";
 const Router = (props) => {
   	return (
 	    <BrowserRouter>
-	      	<Routes >
+	      	<Routes>
 			  	<Route path="admin/login" element={<Login />} />
 
 		        <Route path="admin/*" element={

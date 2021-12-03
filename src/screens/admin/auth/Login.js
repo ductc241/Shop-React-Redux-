@@ -1,9 +1,15 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd';
 
-import { login } from '../../../api/user';
+import { useDispatch } from 'react-redux';
+import { Form, Input, Button, notification } from 'antd';
+import { useNavigate } from 'react-router';
+
+import { signin } from '../../../redux/slice/user';
 
 export default function Login() {
+    const navigate = useNavigate()
+    const dispatch = useDispatch();
+
     const layout = {
         labelCol: { span: 4 },
         wrapperCol: { span: 19 },
@@ -11,8 +17,26 @@ export default function Login() {
   
 
     const onFinish = async (user) => {
-        const response = await login(user)
-        console.log(response)
+        const { payload } = await dispatch(signin(user))
+        
+        if(payload.msg){
+            notification.warning({
+                message: 'Thông Báo',
+				description: payload.msg,
+				duration: 2.0,
+            })
+            return
+        }
+
+        notification.warning({
+            message: 'Thông Báo',
+            description: 'Đăng nhập thành công',
+            duration: 1.5,
+            onClose: () => {
+                navigate('/admin/products/list')
+            }
+
+        })
     };
 
     return (

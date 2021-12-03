@@ -1,13 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 export default function RequireAdmin({ children }) {
-  // const userSignin = useSelector((state) => state.userSignin);
-
-  if (false) {
-    return <Navigate to="/admin/login" />;
+  const {isLogin, user} = useSelector((state) => state.user);
+  
+  console.log(user)
+  
+  if (isLogin && user.userInfor.role === 'admin') {
+    return children;
   }
 
-  return children;
+  return <Navigate to="/admin/login" />;
 }

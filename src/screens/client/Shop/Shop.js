@@ -1,8 +1,21 @@
+import { useEffect, useState } from 'react'
+import { getAll } from '../../../api/product';
+
+import { Product } from '../product/Product';
 import './Shop.css';
-import Laptop from '../images/laptop.png'
-import Iphone from '../images/iphone.png'
 
 export const Shop = () => {
+	const [products, setProducts] = useState([])
+
+	useEffect(() => {
+		async function getProducts() {
+			const { data } = await getAll()
+			setProducts(data)
+		}
+
+		getProducts()
+	}, [])
+
     return (
         <div className="container">
 			<div className="shop">
@@ -33,36 +46,9 @@ export const Shop = () => {
 				</div>
 				<div className="shop-content">
 					<div className="product-list">
-						<div className="product">
-							<img src={Iphone} alt="" />
-							<div className="product-content">
-								<p className="product-name">Consetetur sadipscing elitr sadipscing</p>
-								<p className="product-price">$200.00</p>
-								<div className="btn btn-product">
-									<span>Add To Cart</span>
-								</div>
-							</div>
-							<div className="product-icon">
-								<a href="">
-									<i className="fas fa-search"></i>
-								</a>
-							</div>
-						</div>
-						<div className="product">
-							<img src={Laptop} alt="" />
-							<div className="product-content">
-								<p className="product-name">Consetetur sadipscing elitr sadipscing</p>
-								<p className="product-price">$200.00</p>
-								<div className="btn btn-product">
-									<span>Add To Cart</span>
-								</div>
-							</div>
-							<div className="product-icon">
-								<a href="">
-									<i className="fas fa-search"></i>
-								</a>
-							</div>
-						</div>
+						{products.data && products.data.map(product => {
+							return <Product {...product} />
+						})}
 					</div>
 				</div>
 			</div>

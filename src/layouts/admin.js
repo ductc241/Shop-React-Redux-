@@ -1,4 +1,4 @@
-import {NavLink, Outlet} from "react-router-dom";
+import { Link, NavLink, Outlet} from "react-router-dom";
 import { Layout, Menu } from 'antd';
 import { UserOutlined, LaptopOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
@@ -13,7 +13,9 @@ function AdminLayout() {
 		    <Header className="header">
 		      	<div className="logo" />
 			    <Menu theme="dark" mode="horizontal">
-			        <Menu.Item key="1">Trang Chủ</Menu.Item>
+			        <Menu.Item key="1">
+						<Link to="/shop">Homepage</Link>
+					</Menu.Item>
 			        <Menu.Item key="2">Dashboard</Menu.Item>			    
 			    </Menu>
 		    </Header>

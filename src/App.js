@@ -11,7 +11,7 @@ import ProductEdit from "./screens/admin/product/ProductEdit";
 import Login from "./screens/admin/auth/Login";
 
 // screens client
-import { Shop } from "./screens/client/shop/Shop";
+import Shop from "./screens/client/shop/Shop";
 
 // auth
 import RequireAdmin from "./components/RequireAdmin";

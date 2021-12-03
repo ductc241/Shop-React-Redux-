@@ -4,7 +4,7 @@ import { getAll } from '../../../api/product';
 import { Product } from '../product/Product';
 import './Shop.css';
 
-export const Shop = () => {
+const Shop = () => {
 	const [products, setProducts] = useState([])
 
 	useEffect(() => {
@@ -55,3 +55,5 @@ export const Shop = () => {
 		</div>
     )
 }
+
+export default Shop

@@ -7,7 +7,6 @@ const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
 function AdminLayout() {
-	const isLogging = true;
   	return (
    		<Layout>
 		    <Header className="header">

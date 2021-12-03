@@ -23,7 +23,7 @@ const validateMessages = {
 	},
 	string: {
 		min: "${label} must be at least ${min} characters",
-	  },
+	}
 };
 
 const ProductCreate = (props) => {

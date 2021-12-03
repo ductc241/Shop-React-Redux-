@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import Laptop from '../images/laptop.png'
 import './Product.css'
 
@@ -15,9 +17,9 @@ export const Product = (props) => {
                 </div>
             </div>
             <div className="product-icon">
-                <a href="">
+                <Link to="">
                     <i className="fas fa-search"></i>
-                </a>
+                </Link>
             </div>
         </div>
     )

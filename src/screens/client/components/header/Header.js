@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './Header.css';
 import Logo from '../../images/logo.png'
 
@@ -9,9 +11,9 @@ export const Header = () => {
                     <div class="header-top">
                         <div class="header-grid">
                             <div class="header-logo">
-                                <a href="#">
+                                <Link to="#">
                                     <img src={Logo} alt="" />
-                                </a>
+                                </Link>
                             </div>
                             <div class="header-search">
                                 <input type="text" placeholder="Search the store" />
@@ -45,11 +47,11 @@ export const Header = () => {
                             </div>
                             <div class="header-menu">
                                 <ul class="menu-list">
-                                    <li class="menu-item"><a href="#">Home</a></li>
-                                    <li class="menu-item"><a href="#">Shop</a></li>
-                                    <li class="menu-item"><a href="#">Blogs</a></li>
-                                    <li class="menu-item"><a href="#">Contact Us</a></li>
-                                    <li class="menu-item"><a href="#">About</a></li>
+                                    <li class="menu-item"><Link to="#">Shop</Link></li>
+                                    <li class="menu-item"><Link to="#">Home</Link></li>
+                                    <li class="menu-item"><Link to="#">Blogs</Link></li>
+                                    <li class="menu-item"><Link to="#">Contact Us</Link></li>
+                                    <li class="menu-item"><Link to="#">About</Link></li>
                                 </ul>
                             </div>
                         </div>

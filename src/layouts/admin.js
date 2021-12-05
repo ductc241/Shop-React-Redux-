@@ -35,8 +35,16 @@ function AdminLayout() {
 			              		</Menu.Item>
 			            	</SubMenu>
 			            	<SubMenu key="sub2" icon={<LaptopOutlined />} title="Category">
-			              		<Menu.Item key="3">Danh mục</Menu.Item>
-			              		<Menu.Item key="4">Thêm danh mục</Menu.Item>
+			              		<Menu.Item key="3">
+								  	<NavLink to="category/list">
+          								Danh Mục
+        							</NavLink>	
+								</Menu.Item>
+			              		<Menu.Item key="4">
+								  	<NavLink to="category/create">
+          								Thêm Danh Mục
+        							</NavLink>	
+								</Menu.Item>
 			            	</SubMenu>
 			            	<SubMenu key="sub3" icon={<UserOutlined />} title="User">
 			              		<Menu.Item key="5">Người dùng</Menu.Item>

@@ -8,6 +8,10 @@ import UserLayout from './layouts/user'
 import ProductList from "./screens/admin/product/ProductList";
 import ProductCreate from "./screens/admin/product/ProductCreate";
 import ProductEdit from "./screens/admin/product/ProductEdit";
+ 
+import CategoryAdd from "./screens/admin/category/CategoryAdd";
+import CategoryList from "./screens/admin/category/CategoryList";
+
 import Login from "./screens/admin/auth/Login";
 
 // screens client
@@ -32,6 +36,9 @@ const Router = (props) => {
 		          	<Route path="products/create" element={<ProductCreate />} />
 		          	<Route path="products/list" element={<ProductList />} />
 		          	<Route path="products/edit/:id" element={<ProductEdit />} />
+
+		          	<Route path="category/list" element={<CategoryList />} />
+		          	<Route path="category/create" element={<CategoryAdd />} />
 		        </Route>
 
 				<Route path="/*" element={<UserLayout />} >

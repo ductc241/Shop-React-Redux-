@@ -2,10 +2,39 @@ import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { Table, Button, notification } from 'antd';
 
-import { getAll } from '../../../api/category';
+import { getAll, remove } from '../../../api/category';
 
 
 const CategoryList = (props) => {
+	const [categories, setCategories] = useState([])
+
+	const onRemoveProduct = async (id) => {
+		await remove(id)
+
+		let newCategory = categories.filter(cate => {
+			return cate._id !== id
+		})
+
+		setCategories(newCategory)
+	}
+
+    useEffect(() =>{
+	    const getCategories = async () =>{
+		    try{
+		        const {data} = await getAll();
+		        await setCategories(data);
+		    }catch(error){
+				notification.warning({
+					message: 'Thông Báo',
+					description: `Cant connect to database`,
+					duration: 3
+				});
+		    }
+	    }
+	    getCategories();
+	},[])
+
+
 	const columns = [
       	{
         	title: 'Name',
@@ -26,29 +55,18 @@ const CategoryList = (props) => {
 								Edit
 							</Link>
 						</Button>
+						<Button
+							type="primary"
+							size='large'
+							onClick={() => onRemoveProduct(record._id)}
+						>
+							Remove
+						</Button>
 					</div>
 				)
 			}
 		}
     ];
-
-    const [categories, setCategories] = useState([])
-
-    useEffect(() =>{
-	    const getCategories = async () =>{
-		    try{
-		        const {data} = await getAll();
-		        await setCategories(data);
-		    }catch(error){
-				notification.warning({
-					message: 'Thông Báo',
-					description: `Cant connect to database`,
-					duration: 3
-				});
-		    }
-	    }
-	    getCategories();
-	},[])
 
   	return (
         <div>

@@ -5,53 +5,55 @@ import Logo from '../../images/logo.png'
 
 export const Header = () => {
     return (
-        <div class="header">
-            <div class="container">
-                <div class="header-main">
-                    <div class="header-top">
-                        <div class="header-grid">
-                            <div class="header-logo">
+        <div className="header">
+            <div className="container">
+                <div className="header-main">
+                    <div className="header-top">
+                        <div className="header-grid">
+                            <div className="header-logo">
                                 <Link to="#">
                                     <img src={Logo} alt="" />
                                 </Link>
                             </div>
-                            <div class="header-search">
+                            <div className="header-search">
                                 <input type="text" placeholder="Search the store" />
                                 <button type="submit">Search</button>
                             </div>
-                            <div class="header-user">
-                                <div class="user-item user-auth">
-                                    <div class="item-icon">
-                                        <i class="fas fa-user"></i>
+                            <div className="header-user">
+                                <div className="user-item user-auth">
+                                    <div className="item-icon">
+                                        <i className="fas fa-user"></i>
                                     </div>
-                                    <div class="item-content">
+                                    <div className="item-content">
                                         <p>My Account</p>
                                     </div>
                                 </div>
-                                <div class="user-item user-cart">
-                                    <div class="item-icon">
-                                        <i class="fas fa-shopping-cart"></i>	
+                                <div className="user-item user-cart">
+                                    <div className="item-icon">
+                                        <i className="fas fa-shopping-cart"></i>	
                                     </div>
-                                    <div class="item-content">
-                                        <p>My Cart</p>
+                                    <div className="item-content">
+                                        <Link to="cart">
+                                            <span>My Cart</span>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="header-bottom">
-                        <div class="header-grid">
-                            <div class="header-category">
+                    <div className="header-bottom">
+                        <div className="header-grid">
+                            <div className="header-category">
                                 <span>all categories</span>
-                                <i class="fas fa-bars"></i>
+                                <i className="fas fa-bars"></i>
                             </div>
-                            <div class="header-menu">
-                                <ul class="menu-list">
-                                    <li class="menu-item"><Link to="#">Shop</Link></li>
-                                    <li class="menu-item"><Link to="#">Home</Link></li>
-                                    <li class="menu-item"><Link to="#">Blogs</Link></li>
-                                    <li class="menu-item"><Link to="#">Contact Us</Link></li>
-                                    <li class="menu-item"><Link to="#">About</Link></li>
+                            <div className="header-menu">
+                                <ul className="menu-list">
+                                    <li className="menu-item"><Link to="shop">Shop</Link></li>
+                                    <li className="menu-item"><Link to="#">Home</Link></li>
+                                    <li className="menu-item"><Link to="#">Blogs</Link></li>
+                                    <li className="menu-item"><Link to="#">Contact Us</Link></li>
+                                    <li className="menu-item"><Link to="#">About</Link></li>
                                 </ul>
                             </div>
                         </div>

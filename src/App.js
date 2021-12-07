@@ -16,6 +16,7 @@ import Login from "./screens/admin/auth/Login";
 
 // screens client
 import Shop from "./screens/client/shop/Shop";
+import Cart from "./screens/client/cart/Cart"
 
 // auth
 import RequireAdmin from "./components/RequireAdmin";
@@ -44,8 +45,7 @@ const Router = (props) => {
 				<Route path="/*" element={<UserLayout />} >
 					<Route index element={<Navigate to="shop" />} />
 		          	<Route path="shop" element={<Shop />} />
-		          	<Route path="products/list" element={<ProductList />} />
-		          	<Route path="products/edit/:id" element={<ProductEdit />} />
+		          	<Route path="cart" element={<Cart />} />
 		        </Route>
 				
 	      	</Routes>
